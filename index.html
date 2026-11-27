@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대학 AI 활용 윤리 가이드라인 — 인터랙티브 가이드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Retro Browser Window Frame -->
+    <div class="browser-window">
+      <!-- Top Title Bar -->
+      <header class="browser-topbar">
+        <div class="topbar-brand">
+          <span class="brand-badge">2026.08</span>
+          <span class="brand-title">대학 AI 활용 윤리 가이드라인</span>
+          <span class="brand-sub">교육부 · 한국대학교육협의회</span>
+        </div>
+        <nav class="topbar-nav" aria-label="섹션 이동">
+          <a href="#video" class="nav-pill">설명영상</a>
+          <a href="#principles" class="nav-pill">핵심원칙</a>
+          <a href="#roles" class="nav-pill">역할별 가이드</a>
+          <a href="#quiz" class="nav-pill">윤리 퀴즈</a>
+          <a href="#checklist" class="nav-pill">체크리스트</a>
+        </nav>
+        <div class="window-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </header>
+
+      <!-- Hero Section (Grid Background + 3D Capsule Search) -->
+      <section class="hero-section">
+        <div class="sticker-bubble" aria-hidden="true">
+          <div class="bubble-inner">♥</div>
+        </div>
+        <div class="doodle doodle-sparkle-1" aria-hidden="true">✦</div>
+        <div class="doodle doodle-sparkle-2" aria-hidden="true">✦</div>
+        <div class="doodle doodle-diamond" aria-hidden="true">◇</div>
+
+        <div class="hero-capsule-wrap">
+          <div class="hero-capsule">
+            <h1>대학 AI 활용 윤리 가이드라인</h1>
+            <p class="hero-lead">교수·학습 현장을 위한 책임 있는 AI 활용 공통 기준을 직접 탐색해 보세요</p>
+
+            <div class="search-bar">
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="키워드 검색 (예: 표절, 출처, 탐지 도구, 개인정보, 온라인 시험...)"
+                aria-label="가이드라인 키워드 검색"
+              />
+              <button type="button" id="clearSearchBtn" class="search-btn" title="검색 초기화">🔍</button>
+            </div>
+
+            <div class="quick-tags" id="quickTags">
+              <button class="q-tag active" data-filter="all">전체 보기</button>
+              <button class="q-tag" data-filter="학문적 진실성">표절·출처</button>
+              <button class="q-tag" data-filter="탐지">탐지 도구</button>
+              <button class="q-tag" data-filter="보안">개인정보·보안</button>
+              <button class="q-tag" data-filter="평가">과제·평가</button>
+            </div>
+          </div>
+          <div class="sticker-cursor" aria-hidden="true"></div>
+        </div>
+
+        <!-- Live Search Results Drawer -->
+        <div id="searchResultsBox" class="search-results hidden" aria-live="polite"></div>
+      </section>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Section 0: 모션그래픽 설명 영상 -->
+        <section id="video" class="section-block">
+          <div class="section-head">
+            <div>
+              <span class="kicker">00 · MOTION GRAPHIC VIDEO</span>
+              <h2>한눈에 보는 가이드라인 설명 영상</h2>
+            </div>
+            <span class="hint-text">구간 버튼을 누르면 해당 파트로 바로 이동합니다</span>
+          </div>
+
+          <div class="video-frame-card">
+            <video
+              id="guideVideo"
+              class="guide-video"
+              controls
+              preload="metadata"
+              playsinline
+            >
+              <source src="./대학_AI_활용_윤리_가이드라인_모션그래픽.mp4" type="video/mp4" />
+              브라우저가 HTML5 비디오 재생을 지원하지 않습니다.
+            </video>
+            <div class="video-chapters" id="videoChapters">
+              <button type="button" class="chapter-btn" data-time="0">▶ 0:00 표지 · 소개</button>
+              <button type="button" class="chapter-btn" data-time="9.6">▶ 0:10 5대 핵심원칙</button>
+              <button type="button" class="chapter-btn" data-time="19.2">▶ 0:19 교수자 가이드</button>
+              <button type="button" class="chapter-btn" data-time="28.8">▶ 0:29 학습자 가이드</button>
+              <button type="button" class="chapter-btn" data-time="38.4">▶ 0:38 부록 · 체크리스트</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 1: 5대 핵심 원칙 & 12개 세부 원칙 -->
+        <section id="principles" class="section-block">
+          <div class="section-head">
+            <div>
+              <span class="kicker">01 · CORE &amp; DETAILED PRINCIPLES</span>
+              <h2>5대 핵심 원칙 &amp; 12개 세부 원칙 탐색기</h2>
+            </div>
+            <span class="hint-text">원칙을 클릭해 세부 내용을 확인하세요</span>
+          </div>
+
+          <div class="timeline-track" id="principleTabs" role="tablist" aria-label="5대 핵심 원칙"></div>
+
+          <div class="principle-detail-card" id="principleDetail" role="tabpanel"></div>
+        </section>
+
+        <!-- Section 2: 역할별 가이드 & 활용 범위 시뮬레이터 -->
+        <section id="roles" class="section-block">
+          <div class="section-head">
+            <div>
+              <span class="kicker">02 · ROLE-BASED GUIDELINES</span>
+              <h2>교수자 · 학습자 가이드 &amp; 활용 범위 시뮬레이터</h2>
+            </div>
+            <div class="role-toggle" role="tablist">
+              <button class="role-btn active" data-role="instructor">교수자 가이드</button>
+              <button class="role-btn" data-role="student">학습자 가이드</button>
+            </div>
+          </div>
+
+          <!-- 3-Stage AI Scope Simulator -->
+          <div class="simulator-box">
+            <div class="sim-header">
+              <strong>수업 내 AI 활용 범위 3단계 시뮬레이터</strong>
+              <span class="sim-sub">유형을 선택하면 강의계획서 예시 문구와 주의사항이 바뀝니다.</span>
+            </div>
+            <div class="scope-buttons" id="scopeButtons">
+              <button class="scope-btn active" data-scope="ban">① 사용 금지</button>
+              <button class="scope-btn" data-scope="limited">② 제한적 사용</button>
+              <button class="scope-btn" data-scope="allow">③ 사용 허용 (자유 사용)</button>
+            </div>
+            <div class="scope-output" id="scopeOutput"></div>
+          </div>
+
+          <!-- Role Cards Grid -->
+          <div class="role-cards-grid" id="roleCardsGrid"></div>
+        </section>
+
+        <!-- Section 3: 인터랙티브 윤리 O/X 퀴즈 -->
+        <section id="quiz" class="section-block">
+          <div class="section-head">
+            <div>
+              <span class="kicker">03 · ETHICS CASE QUIZ</span>
+              <h2>상황별 AI 윤리 O/X 퀴즈</h2>
+            </div>
+            <div class="quiz-score-pill" id="quizScorePill">점수: 0 / 5</div>
+          </div>
+
+          <div class="quiz-card" id="quizCard"></div>
+        </section>
+
+        <!-- Section 4: 인터랙티브 체크리스트 & 기여도 계산기 -->
+        <section id="checklist" class="section-block">
+          <div class="section-head">
+            <div>
+              <span class="kicker">04 · INTERACTIVE CHECKLIST</span>
+              <h2>자가 점검 체크리스트 &amp; AI 기여도 리포트 생성기</h2>
+            </div>
+            <div class="role-toggle" id="checkTabs">
+              <button class="role-btn active" data-check="instructor_guide">교수자 (지도용)</button>
+              <button class="role-btn" data-check="instructor_self">교수자 (자가점검)</button>
+              <button class="role-btn" data-check="student_self">학습자 (과제 제출용)</button>
+            </div>
+          </div>
+
+          <div class="checklist-layout">
+            <div class="memo-panel">
+              <div class="memo-progress-row">
+                <span id="checkProgressLabel">완료: 0 / 0</span>
+                <button type="button" class="mini-btn" id="resetChecklistBtn">초기화</button>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="checkProgressBar"></div>
+              </div>
+              <ul class="checklist-items" id="checklistItems"></ul>
+            </div>
+
+            <!-- AI Contribution Calculator (Student Report Helper) -->
+            <div class="memo-panel cream-panel">
+              <h3 class="panel-title">학습자 AI 활용 보고서(기여도) 작성 도우미</h3>
+              <div class="form-grid">
+                <label>과목명 <input type="text" id="repCourse" placeholder="예: 인공지능과 윤리" /></label>
+                <label>사용한 AI 도구 <input type="text" id="repTool" placeholder="예: ChatGPT (GPT-4o), Gemini" /></label>
+                <label>주요 활용 단계 <input type="text" id="repStage" placeholder="예: 자료 탐색, 초안 구조 점검" /></label>
+                <label>AI 기여도: <strong id="aiPctText">30%</strong> (본인 기여도: <strong id="mePctText">70%</strong>)
+                  <input type="range" id="repSlider" min="0" max="100" step="5" value="30" />
+                </label>
+              </div>
+              <div class="report-preview" id="reportPreview"></div>
+              <button type="button" class="primary-btn" id="copyReportBtn">활용 내역 문구 복사하기</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Bottom Status Bar -->
+      <footer class="browser-footer">
+        <div class="footer-left-block" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="footer-text">
+          기반 문서: 교육부·한국대학교육협의회 「대학 AI 활용 윤리 가이드라인」 (2026.08) · Vanilla JS Interactive Web
+        </div>
+        <div class="footer-heart" aria-hidden="true">♥</div>
+      </footer>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
